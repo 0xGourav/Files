@@ -1,6 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+
+cp -r ~/storage/shared/GITHUB/* . 
 # Auto Git Push Script
+
 
 echo "Starting Git Auto Push..."
 
