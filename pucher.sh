@@ -9,7 +9,7 @@ BLUE="\033[1;34m"
 CYAN="\033[1;36m"
 
 echo -e "\n${BOLD}${CYAN}[1/4] 📂 Copying files...${RESET}"
-if cp -r ~/storage/shared/GITHUB/CARGO/* .; then
+if cp -r ~/storage/shared/GITHUB/CARGO/* CARGO/; then
     echo -e "${GREEN}✓ Files copied successfully.${RESET}"
 else
     echo -e "${RED}✗ Failed to copy files.${RESET}"
