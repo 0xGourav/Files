@@ -1,7 +1,8 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
 # Colors
 RESET="\033[0m"
 BOLD="\033[1m"
-
 RED="\033[1;31m"
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
@@ -17,18 +18,19 @@ else
 fi
 
 echo -e "\n${BOLD}${CYAN}[2/4] 📦 Staging changes...${RESET}"
-if git add .; then
-    echo -e "${GREEN}✓ Changes staged.${RESET}"
-else
-    echo -e "${RED}✗ Failed to stage changes.${RESET}"
-    exit 1
+git add .
+
+# Check if anything is staged
+if git diff --cached --quiet; then
+    echo -e "${YELLOW}⚠ No changes detected. Nothing to commit.${RESET}"
+    exit 0
 fi
 
 echo -e "\n${BOLD}${CYAN}[3/4] 📝 Creating commit...${RESET}"
 if git commit -m "Auto update: $(date '+%Y-%m-%d %H:%M:%S')"; then
     echo -e "${GREEN}✓ Commit created.${RESET}"
 else
-    echo -e "${YELLOW}⚠ Nothing to commit or commit failed.${RESET}"
+    echo -e "${RED}✗ Commit failed.${RESET}"
     exit 1
 fi
 
@@ -39,3 +41,5 @@ else
     echo -e "${RED}✗ Push failed.${RESET}"
     exit 1
 fi
+
+echo -e "\n${GREEN}${BOLD}🎉 Done!${RESET}"
