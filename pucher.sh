@@ -18,7 +18,7 @@ else
 fi
 
 echo -e "\n${BOLD}${CYAN}[2/4] 📦 Staging changes...${RESET}"
-git add .
+git add -A
 
 # Check if anything is staged
 if git diff --cached --quiet; then
